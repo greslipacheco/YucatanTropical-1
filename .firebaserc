@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "yucatantropical": {
+      "hosting": {
+        "YucatanTropical": [
+          "yucatantropical"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "yucatantropical"
+  }
+}

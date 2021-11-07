@@ -1,0 +1,42 @@
+<div class="container my-1">
+    <div *ngIf="noReporte" class="row m-2">
+        <div class="col-12 p-1">
+            <div class="div-panel c">
+                <div class="panel-content">
+                    <i class="far fa-times-circle fa-3x mb-2"></i>
+                    <span class="d-block">No se encontró reportes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!noReporte" class="row p-1 ">
+        <div class="col-12 px-1" *ngFor="let item of reportes">
+            <div class="card espacio">
+                <div class="card-body p-3">
+                    <h2 class="card-title" align="center"><u>{{item.title}}</u> </h2>
+                    <div class="row no-gutters">
+                        <div class="col-3 m-0">
+                            <p class="card-text"><b>Nombre:</b> {{item.nombre}} </p>
+                            <p class="card-text"><b>Email:</b> {{item.email}}</p>
+                            <p class="card-text"><b>Telefono:</b> {{item.telefono}}</p>
+                            <p class="card-text"><b>Dirección:</b> {{item.direccion}}</p>
+                            <p class="card-text"><b>No. local:</b> {{item.numeroC}}</p>
+                        </div>
+                        <div class="col-3 m-0">
+                            <p class="card-text"><b>Codigo Postal: </b>{{item.codigoP}}</p>
+                            <p class="card-text"><b>Localidad:</b> {{item.localidad}}</p>
+                            <p class="card-text"><b>Municipio:</b> {{item.municipio}}</p>
+                            <p class="card-text"><b>Estado: </b>{{item.estado}}</p>
+                            <p class="card-text"><b><h5>Descripcion: </h5> </b>{{item.descripcion}}</p>
+                        </div>                       
+                        <div class="col-6 m-0 align-self-center" align="right">
+                            <button class="btn btn-success mx-1"><i class="fas fa-check"></i></button>
+                            <button class="btn btn-warning mx-1"><i class="fas fa-ban"></i></button>
+                            <button class="btn btn-danger" (click)="removeMovie(item.id)"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="site-content fondo">
+    <div class="site-header">
+        <div class="container">
+            <a href="#" class="branding">
+                <img src="assets/form/images/logo.png" alt="" class="logo">
+                <div class="logo-type">
+                    <h1 class="site-title">Company name</h1>
+                    <small class="site-description">tagline goes here</small>
+                </div>
+            </a>
+
+            <!-- Default snippet for navigation -->
+            <div class="main-navigation">
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <li class="menu-item"><a href="#">Home</a></li>
+                    <li class="menu-item"><a href="#">News</a></li>
+                    <li class="menu-item"><a href="#">Live cameras</a></li>
+                    <li class="menu-item"><a href="#">Photos</a></li>
+                    <li class="menu-item current-menu-item"><a href="#">Reportes</a></li>
+                </ul> <!-- .menu -->
+            </div> <!-- .main-navigation -->
+
+            <div class="mobile-navigation"></div>
+
+        </div>
+    </div> <!-- .site-header -->
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a [routerLink]="'/home'">Home</a>
+                <span>Genera tu reporte</span>
+            </div>
+        </div> 
+        
+        <div class="fullwidth-block letras">
+            <div class="container">               
+
+                <div class="col-md-5">   
+                    <input class="find-location" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>                                    
+                    <div class="contact-details">
+
+                        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                                <agm-info-window>
+                                    <div class="negro">
+                                        <p>La latitud es: {{latitude}}</p>
+                                        <p>La Longitud es: {{longitude}}</p>
+                                    </div>
+                                </agm-info-window>
+                            </agm-marker>
+                        </agm-map>
+                  
+                        <div class="contact-info">
+                            <address>
+                                <img src="assets/form/images/icon-marker.png" alt="">
+                                <p>Company Name INC. <br>
+                                    2803 Avenue Street, Los Angeles</p>
+                            </address>
+
+                            <a href="#"><img src="assets/form/images/icon-phone.png" alt="">+1 800 314 235</a>
+                            <a href="#"><img src="assets/form/images/icon-envelope.png" alt="">contact@companyname.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-md-offset-1">
+                    <h2 class="section-title">Contact us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur inventore ducimus,
+                        facilis, numquam id soluta omnis eius recusandae nesciunt vero repellat harum cum. Nisi facilis
+                        odit hic, ipsum sed!</p>
+
+                    <!--Aqui Enviarás los datos-->
+                    <form [formGroup]="createReporte" class="contact-form" (ngSubmit)="addReporte()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" formControlName="titulo" placeholder="Title">
+                                <div *ngIf="submitted && createReporte.invalid">
+                                    Titulo es <strong>Requerido</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="name" placeholder="Your Name">
+                                <div *ngIf="submitted && createReporte.invalid">
+                                    Nombre es <strong>Requerido</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" formControlName="phone" placeholder="Your Phone Number">
+                                <div *ngIf="submitted && createReporte.invalid">
+                                    Telefono es <strong>Requerido</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="correo" placeholder="Your Email">
+                                <div *ngIf="submitted && createReporte.invalid">
+                                    Email es <strong>Requerido</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <textarea type="text" formControlName="texto" placeholder="Description..."></textarea>
+                        <div *ngIf="submitted && createReporte.invalid">
+                            Texto es <strong>Requerido</strong>
+                        </div>
+
+                        <div class="text-right">
+                            <input  type="submit" placeholder="Send message">
+                        </div>
+                    </form>
+                      <!--Aqui Enviarás los datos-->
+
+                </div>
+            </div>
+        </div>
+
+    </main> <!-- .main-content -->
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="#" class="subscribe-form">
+                        <input type="text" placeholder="Enter your email to subscribe...">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="letras">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+        </div>
+    </footer> <!-- .site-footer -->
+</div>
